@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Lista de productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p style="text-align: center" *ngIf="products.length<1">
+    No tenemos productos para mostrar
+  </p>
+
+  <ion-list>
+    <ion-item *ngFor="let product of products" class="product-item">
+      <ion-label>
+        <h2 class="product-name">{{ product.nombre }}</h2>
+        <p class="product-price">Precio: {{ product.precio }}</p>
+        <p class="product-quantity">Cantidad: {{ product.cantidad }}</p>
+      </ion-label>
+      <ion-button
+        (click)="deleteProduct(product._id)"
+        color="danger"
+        class="delete-button"
+        >Eliminar</ion-button
+      >
+    </ion-item>
+  </ion-list>
+  <div style="display: flex; justify-content: center; margin-top: 20px">
+    <ion-button [routerLink]="['/add-product']">Agregar Producto</ion-button>
+  </div>
+</ion-content>
